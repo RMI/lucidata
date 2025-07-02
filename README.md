@@ -20,7 +20,7 @@ Lucidata is an LLM based query tool designed to democratize data access. It tran
 ### Prerequisites
 
 - `docker` installed
-- An OpenAPI `API_KEY`
+- An OpenAI `API_KEY`
 
 ### Usage
 
@@ -30,13 +30,19 @@ Lucidata is an LLM based query tool designed to democratize data access. It tran
    cd lucidata
    ```
 
-2. Build and start the application with `docker compose`:
+2. Copy the example environment file and edit it to include your OpenAI key:
+   ```bash
+    cp .env.example .env
+    # Edit the .env file to include your OpenAI key ...
+    ```
+
+3. Build and start the application with `docker compose`:
    ```bash
    docker compose build # it can take a while to compile, be patient :-)
    docker compose up
    ```
 
-3. Send your query to the query_router endpoint, and check out the results!
+4. Send your query to the query_router endpoint, and check out the results!
 ``` bash
 curl -X POST "http://localhost:8002/translate-and-execute" \
   -H "Content-Type: application/json" \
@@ -45,7 +51,7 @@ curl -X POST "http://localhost:8002/translate-and-execute" \
   }'
 ```
 
-4. (Optional) Pipe the output to the `jq` CLI:
+5. (Optional) Pipe the output to the `jq` CLI:
 ``` bash
 curl -X POST "http://localhost:8002/translate-and-execute" \
   -H "Content-Type: application/json" \
